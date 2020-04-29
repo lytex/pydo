@@ -47,6 +47,9 @@
 <row name="body" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
+<row name="chained" null="1" autoincrement="0">
+<datatype>INTERVAL</datatype>
+<default>NULL</default></row>
 <row name="due" null="1" autoincrement="0">
 <datatype>DATETIME</datatype>
 <default>NULL</default></row>

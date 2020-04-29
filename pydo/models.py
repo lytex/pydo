@@ -10,6 +10,7 @@ from sqlalchemy import \
     create_engine, \
     Column, \
     DateTime, \
+    Interval, \
     Float, \
     ForeignKey, \
     Integer, \
@@ -53,9 +54,10 @@ class Task(Base):
     id = Column(String, primary_key=True, doc='fulid of creation')
     agile = Column(String, doc='Task agile state')
     body = Column(String, doc='Task description')
-    due = Column(DateTime, doc='Due datetime')
+    due = Column(Interval, doc='Due datetime')
     closed = Column(DateTime, doc='Closed datetime')
     wait = Column(DateTime, doc='Wait datetime')
+    chained = Column(DateTime, doc='Recurrence interval for chained tasks')
     title = Column(String, nullable=False, doc='Task title')
     state = Column(
         String,
@@ -88,6 +90,7 @@ class Task(Base):
         closed=None,
         due=None,
         wait=None,
+        chained=None,
         body=None,
         estimate=None,
         fun=None,
@@ -101,6 +104,7 @@ class Task(Base):
         self.closed = closed
         self.due = due
         self.wait = wait
+        self.chained = chained
         self.title = title
         self.estimate = estimate
         self.body = body

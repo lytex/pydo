@@ -41,7 +41,7 @@ pydo_default_config = {
     'report.list.columns': {
         'default': 'id, title, project_id, priority, tags, due',
         'choices': 'id, title, description, project_id, priority, tags, '
-        'agile, estimate, willpower, value, fun',
+        'agile, estimate, willpower, value, fun, chained',
         'description': 'Ordered coma separated list of Task attributes '
         'to print',
     },
@@ -250,6 +250,10 @@ class TaskManager(TableManager):
                 'regexp': r'^body:',
                 'type': 'str',
             },
+            'chained': {
+                'regexp': r'^(ch|chained):',
+                'type': 'date',
+            },
             'due': {
                 'regexp': r'^due:',
                 'type': 'date',
@@ -323,6 +327,7 @@ class TaskManager(TableManager):
             'agile': None,
             'body': None,
             'due': None,
+            'chained': None,
             'title': [],
             'estimate': None,
             'fun': None,
